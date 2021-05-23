@@ -1,0 +1,2 @@
+rootProject.name = "PhotosK"
+include ':app'
