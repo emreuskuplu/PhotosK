@@ -1,9 +1,12 @@
 package com.emre.android.photosk
 
+import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.emre.android.photosk.databinding.ItemPhotoBinding
+import com.squareup.picasso.Picasso
 
 class PhotosAdapter(private var photoList: List<String> = listOf()) :
     RecyclerView.Adapter<PhotosAdapter.PhotosViewHolder>() {
@@ -21,7 +24,14 @@ class PhotosAdapter(private var photoList: List<String> = listOf()) :
     }
 
     override fun onBindViewHolder(holder: PhotosViewHolder, position: Int) {
-        holder.binding.photo.text = photoList[position]
+        val photoUrl = photoList[position]
+        if (photoUrl != "") {
+            Picasso.get()
+                .load(photoUrl)
+                .placeholder(ColorDrawable(ContextCompat.getColor(holder.itemView.context, R.color.colorItemPhotoPlaceholder)))
+                .fit()
+                .into(holder.binding.photo)
+        }
     }
 
     override fun getItemCount(): Int {

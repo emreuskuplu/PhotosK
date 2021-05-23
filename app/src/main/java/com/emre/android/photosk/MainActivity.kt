@@ -2,6 +2,7 @@ package com.emre.android.photosk
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.emre.android.photosk.databinding.ActivityMainBinding
 
@@ -11,12 +12,12 @@ class MainActivity : AppCompatActivity() {
         val binding = ActivityMainBinding.inflate(layoutInflater)
         val mainViewModel = MainViewModel()
         val photosAdapter = PhotosAdapter()
-        val linearLayoutManager =
-            LinearLayoutManager(baseContext, LinearLayoutManager.VERTICAL, false)
+        val gridLayoutManager =
+            GridLayoutManager(baseContext, 3, GridLayoutManager.VERTICAL, false)
         setContentView(binding.root)
 
         binding.photosRecyclerview.adapter = photosAdapter
-        binding.photosRecyclerview.layoutManager = linearLayoutManager
+        binding.photosRecyclerview.layoutManager = gridLayoutManager
 
         mainViewModel.fetchPhotoUrls()
         mainViewModel.photosLiveData.observe(this, {

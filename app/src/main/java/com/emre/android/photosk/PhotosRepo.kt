@@ -8,7 +8,7 @@ object PhotosRepo {
     private const val METHOD = "flickr.photos.getRecent"
     private const val FORMAT = "json"
     private const val EXTRAS = "url_m"
-    private const val PER_PAGE = "100"
+    private const val PER_PAGE = "102"
 
     fun fetchPhotoUrls(): Call<Photo> {
         return PhotosRetrofit.photosApiService

@@ -33,5 +33,4 @@ class MainViewModel : ViewModel() {
             Log.i(javaClass.simpleName, PhotosRepo.fetchPhotoUrls().request().url().toString())
         }
     }
-
 }
